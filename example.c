@@ -7,8 +7,13 @@
 int main() {
 	vector_t* vec = vector_new();
 
-	for(int i = 0; i < 100; i++)
+	for(int i = 0; i < 10; i++)
 		vector_push_back(vec, i);
+
+    vector_insert(vec, 3, 1234567);
+    vector_insert(vec, 3, 99);
+    vector_insert(vec, 2, 64321);
+    vector_insert(vec, 0, 8989);
 
 	vector_print_like_unsigned_decimal(vec);
 

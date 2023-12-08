@@ -36,6 +36,7 @@ void vector_resize(vector_t* vec, size_t size) {
 
 	vec->data = new_buf;
 	vec->capacity = size;
+    vec->size = size;
 }
 
 void vector_push_back(vector_t* vec, size_t element) {
@@ -141,6 +142,24 @@ void vector_swap(vector_t* vec, size_t first, size_t second) {
 	size_t b = vec->data[second];
 	vec->data[second] = vec->data[first];
 	vec->data[first] = b;
+}
+
+
+
+void vector_insert(vector_t* vec, size_t index, size_t value) {
+	if(!vec)
+		return;
+
+    if(index >= vec->size)
+        return;
+
+    vector_resize(vec, vec->size + 1);
+
+    for(size_t i = vec->size - 1; i > index; i--) {
+        vec->data[i] = vec->data[i - 1];
+    }
+
+    vec->data[index] = value;
 }
 
 void vector_destroy(vector_t* vec) {
