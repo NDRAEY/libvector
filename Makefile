@@ -7,7 +7,7 @@ CFLAGS ?= -Wall -Wextra -ggdb3 -O0
 all: $(OUT)
 
 $(OUT): $(OBJS)
-	ar rs $(OUT) $(OBJS)
+	ar rcs $(OUT) $(OBJS)
 
 $(OBJS): %.o: %.c
 	$(CC) $(CFLAGS) $< -c -o $@
